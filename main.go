@@ -2,8 +2,6 @@ package main
 
 import (
 	"fmt"
-	"github.com/docker/docker/api/types"
-	iotmakerDocker "github.com/helmutkemper/iotmaker.docker"
 	"net/http"
 )
 
@@ -13,6 +11,11 @@ func main() {
 }
 
 func HelloServer(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "%v", "list")
+}
+
+/*
+func _HelloServer(w http.ResponseWriter, r *http.Request) {
 	var dockerSys = iotmakerDocker.DockerSystem{}
 	var list []types.NetworkResource
 
@@ -28,3 +31,4 @@ func HelloServer(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Fprintf(w, "%v", list)
 }
+*/
