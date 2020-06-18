@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	http.HandleFunc("/", HelloServer)
+	http.HandleFunc("/l", HelloServer)
 	http.ListenAndServe(":3000", nil)
 }
 
