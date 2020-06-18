@@ -12,4 +12,4 @@ RUN go build -o /app/main /app/main.go
 VOLUME /app/static
 EXPOSE 3000
 
-CMD ["/main"]
+CMD ["/app/main"]
