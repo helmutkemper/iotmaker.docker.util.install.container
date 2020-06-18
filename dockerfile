@@ -5,6 +5,8 @@ RUN chmod 700 /app
 
 COPY . /app
 
+RUN go get -u github.com/docker/docker
+RUN go get -u github.com/helmutkemper/iotmaker.docker
 #RUN find . -name vendor -type d -exec rm -rf {} +
 
 # import golang packages to be used inside image "scratch"
