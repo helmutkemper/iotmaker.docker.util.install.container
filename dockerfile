@@ -8,9 +8,7 @@ COPY . /app
 # install git
 RUN apk add --no-cache git
 
-RUN go get godoc.org/golang.org/x/sys/windows/svc
-RUN go get godoc.org/golang.org/x/sys/windows/registry
-RUN go get godoc.org/golang.org/x/sys/windows
+RUN go get godoc.org/golang.org/x/sys/windows; exit 0
 
 # install docker
 #RUN apk add --update docker openrc
@@ -32,24 +30,24 @@ RUN git clone https://github.com/moby/moby.git
 RUN mv moby docker
 RUN find . -name vendor -type d -exec rm -rf {} +
 
-RUN go get github.com/opencontainers/go-digest
+RUN go get github.com/opencontainers/go-digest; exit 0
 RUN find . -name vendor -type d -exec rm -rf {} +
 
-RUN go get github.com/opencontainers/image-spec/specs-go/v1
+RUN go get github.com/opencontainers/image-spec/specs-go/v1; exit 0
 RUN find . -name vendor -type d -exec rm -rf {} +
 
-RUN go get github.com/helmutkemper/iotmaker.docker
-RUN go get github.com/helmutkemper/iotmaker.docker.util.whaleAquarium/tree/master/v1.0.0
-RUN go get github.com/Microsoft/go-winio
-RUN go get github.com/containerd/containerd
-RUN go get github.com/docker/distribution/reference
-RUN go get github.com/docker/go-units
-RUN go get github.com/gogo/protobuf/proto
-RUN go get github.com/pkg/errors
-RUN go get github.com/sirupsen/logrus
-RUN go get google.golang.org/grpc/codes
-RUN go get github.com/golang/protobuf/proto
-RUN go get google.golang.org/genproto/googleapis/rpc/status
+RUN go get github.com/helmutkemper/iotmaker.docker; exit 0
+RUN go get github.com/helmutkemper/iotmaker.docker.util.whaleAquarium/tree/master/v1.0.0; exit 0
+RUN go get github.com/Microsoft/go-winio; exit 0
+RUN go get github.com/containerd/containerd; exit 0
+RUN go get github.com/docker/distribution/reference; exit 0
+RUN go get github.com/docker/go-units; exit 0
+RUN go get github.com/gogo/protobuf/proto; exit 0
+RUN go get github.com/pkg/errors; exit 0
+RUN go get github.com/sirupsen/logrus; exit 0
+RUN go get google.golang.org/grpc/codes; exit 0
+RUN go get github.com/golang/protobuf/proto; exit 0
+RUN go get google.golang.org/genproto/googleapis/rpc/status; exit 0
 
 # install moby project - end
 
