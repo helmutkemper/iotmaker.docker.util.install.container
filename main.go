@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"github.com/docker/docker/api/types"
 	iotmakerDocker "github.com/helmutkemper/iotmaker.docker"
-	"log"
 	"net/http"
 )
 
@@ -19,12 +18,12 @@ func HelloServer(w http.ResponseWriter, r *http.Request) {
 
 	var err = dockerSys.Init()
 	if err != nil {
-		log.Fatal(err)
+		panic(err)
 	}
 
 	err, list = dockerSys.NetworkList()
 	if err != nil {
-		log.Fatal(err)
+		panic(err)
 	}
 
 	fmt.Fprintf(w, "%v", list)
