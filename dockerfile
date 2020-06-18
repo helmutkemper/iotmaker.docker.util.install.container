@@ -8,7 +8,9 @@ COPY . /app
 # install git
 RUN apk add --no-cache git
 
-RUN go get golang.org/x/sys
+RUN go get godoc.org/golang.org/x/sys/windows/svc
+RUN go get godoc.org/golang.org/x/sys/windows/registry
+RUN go get godoc.org/golang.org/x/sys/windows
 
 # install docker
 #RUN apk add --update docker openrc
