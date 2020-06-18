@@ -9,11 +9,7 @@ COPY . /app
 ARG CGO_ENABLED=0
 RUN go build -o /app/main /app/main.go
 
-FROM scratch
-
-COPY --from=builder /app/ .
-
-VOLUME /static
+VOLUME /app/static
 EXPOSE 3000
 
-CMD ["/main"]
+CMD ["/app/main"]
