@@ -5,12 +5,19 @@ RUN chmod 700 /app
 
 COPY . /app
 
-# RUN apk add --no-cache git
+RUN apk add --no-cache git
+
+RUN mkdir /go/src/github.com
+RUN mkdir /go/src/github.com/docker
+
+WORKDIR /go/src/github.com/docker
+
+RUN git clone https://github.com/moby/moby.git
+RUN mv moby docker
 
 # RUN apk add --update docker openrc
 # RUN rc-update add docker boot
 
-# RUN go get -u github.com/moby/moby
 # RUN go get -u github.com/helmutkemper/iotmaker.docker
 
 # RUN find . -name vendor -type d -exec rm -rf {} +
