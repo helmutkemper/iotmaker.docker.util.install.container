@@ -57,7 +57,7 @@ RUN git clone https://github.com/sirupsen/logrus.git
 WORKDIR /go/src/github.com/pkg
 RUN git clone https://github.com/pkg/errors.git
 
-RUN go get golang.org/x/sys
+RUN go get golang.org/x/sys/windows
 RUN go get google.golang.org/grpc/codes
 
 # install moby project - end
