@@ -44,7 +44,7 @@ RUN go get github.com/gogo/protobuf/proto; exit 0
 RUN go get github.com/docker/go-units; exit 0
 RUN go get github.com/docker/distribution/reference; exit 0
 RUN go get github.com/Microsoft/go-winio; exit 0
-RUN go get github.com/helmutkemper/iotmaker.docker.util.whaleAquarium/tree/master/v1.0.0; exit 0
+RUN go get github.com/helmutkemper/iotmaker.docker.util.whaleAquarium; exit 0
 RUN go get github.com/helmutkemper/iotmaker.docker; exit 0
 
 
