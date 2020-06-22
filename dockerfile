@@ -23,26 +23,27 @@ RUN mkdir /go/src/github.com/docker
 # change dir
 WORKDIR /go/src/github.com/docker
 
-RUN go get github.com/helmutkemper/iotmaker.docker; exit 0
-RUN go get github.com/helmutkemper/iotmaker.docker.util.whaleAquarium/tree/master/v1.0.0; exit 0
-RUN go get github.com/Microsoft/go-winio; exit 0
-RUN go get github.com/docker/distribution/reference; exit 0
-RUN go get github.com/docker/go-units; exit 0
-RUN go get github.com/gogo/protobuf/proto; exit 0
-RUN go get github.com/pkg/errors; exit 0
-RUN go get github.com/sirupsen/logrus; exit 0
-RUN go get google.golang.org/grpc/codes; exit 0
-RUN go get github.com/golang/protobuf/proto; exit 0
-RUN go get google.golang.org/genproto/googleapis/rpc/status; exit 0
-RUN go get github.com/containerd/containerd; exit 0
-RUN go get github.com/opencontainers/image-spec/specs-go/v1; exit 0
-RUN go get github.com/opencontainers/go-digest; exit 0
-
 # clone moby project
 RUN git clone https://github.com/moby/moby.git
 
 # rename moby to docker
 RUN mv moby docker
+
+RUN go get github.com/opencontainers/go-digest; exit 0
+RUN go get github.com/opencontainers/image-spec/specs-go/v1; exit 0
+RUN go get github.com/containerd/containerd; exit 0
+RUN go get google.golang.org/genproto/googleapis/rpc/status; exit 0
+RUN go get github.com/golang/protobuf/proto; exit 0
+RUN go get google.golang.org/grpc/codes; exit 0
+RUN go get github.com/sirupsen/logrus; exit 0
+RUN go get github.com/pkg/errors; exit 0
+RUN go get github.com/gogo/protobuf/proto; exit 0
+RUN go get github.com/docker/go-units; exit 0
+RUN go get github.com/docker/distribution/reference; exit 0
+RUN go get github.com/Microsoft/go-winio; exit 0
+RUN go get github.com/helmutkemper/iotmaker.docker.util.whaleAquarium/tree/master/v1.0.0; exit 0
+RUN go get github.com/helmutkemper/iotmaker.docker; exit 0
+
 
 WORKDIR /
 RUN find . -name vendor -type d -exec rm -rf {} +
