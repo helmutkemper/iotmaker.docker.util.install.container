@@ -29,6 +29,8 @@ RUN git clone https://github.com/moby/moby.git
 # rename moby to docker
 RUN mv moby docker
 
+RUN go get golang.org/x/crypto; exit 0
+RUN go get golang.org/x/net; exit 0
 RUN go get github.com/opencontainers/go-digest; exit 0
 RUN go get github.com/opencontainers/image-spec/specs-go/v1; exit 0
 RUN go get github.com/containerd/containerd; exit 0
