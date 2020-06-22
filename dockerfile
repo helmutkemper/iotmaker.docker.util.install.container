@@ -21,14 +21,15 @@ RUN mkdir /go/src/github.com
 RUN mkdir /go/src/github.com/docker
 
 # change dir
-WORKDIR /go/src/github.com/docker
+#WORKDIR /go/src/github.com/docker
 
 # clone moby project
-RUN git clone https://github.com/moby/moby.git
+#RUN git clone https://github.com/moby/moby.git
 
 # rename moby to docker
-RUN mv moby docker
+#RUN mv moby docker
 
+RUN go get github.com/docker/docker; exit 0;
 RUN go get golang.org/x/crypto; exit 0
 RUN go get golang.org/x/net; exit 0
 RUN go get golang.org/x/text; exit 0
