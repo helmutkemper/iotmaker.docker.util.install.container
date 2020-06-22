@@ -72,7 +72,7 @@ RUN git clone https://github.com/moby/moby.git
 RUN mv moby docker
 RUN find . -name vendor -type d -exec rm -rf {} +
 
-
+RUN go mod vendor
 
 
 
