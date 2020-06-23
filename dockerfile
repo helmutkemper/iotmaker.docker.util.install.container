@@ -1,14 +1,18 @@
 FROM golang:alpine3.12 as builder
 
+RUN echo "starting...\n"
+
 RUN mkdir /app
 RUN chmod 700 /app
 
 COPY . /app
 
 # install git
+RUN echo "stalling git...\n"
 RUN apk add --no-cache git
 
 # install docker
+RUN echo "stalling docker...\n"
 RUN apk add --update docker openrc
 RUN rc-update add docker boot
 
@@ -19,9 +23,16 @@ RUN mkdir /go/src/github.com/docker
 # change dir
 WORKDIR /go/src/github.com/docker
 
+RUN echo "stalling wget...\n"
 RUN RUN apk update && apk add --no-cache wget
+
+RUN echo "wget v19...\n"
 RUN wget https://github.com/moby/moby/archive/v19.03.11.tar.gz
+
+RUN echo "tar v19...\n"
 RUN tar -xzf moby-19.03.11.tar.gz && rm moby-19.03.11.tar.gz
+
+RUN echo "rename v19...\n"
 RUN mv moby-19.03.11 docker
 
 RUN go get godoc.org/golang.org/x/sys/windows; exit 0
