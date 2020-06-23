@@ -11,7 +11,6 @@ RUN apk add --no-cache git
 # install docker
 RUN apk add --update docker openrc
 RUN rc-update add docker boot
-RUN service docker start
 
 # make libraries folder from git project
 RUN mkdir /go/src/github.com
