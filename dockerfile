@@ -1,3 +1,6 @@
+#docker run --rm --name test -d golang:alpine3.12 tail -f /dev/null
+#docker exec -it test sh
+
 FROM golang:alpine3.12 as builder
 
 RUN mkdir /app
