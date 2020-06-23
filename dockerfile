@@ -11,7 +11,7 @@ RUN apk add --no-cache git
 RUN go get godoc.org/golang.org/x/sys/windows; exit 0
 
 # install docker
-RUN apk add --no-cache  --repository http://dl-cdn.alpinelinux.org/alpine/edge/main --repository  http://dl-cdn.alpinelinux.org/alpine/edge/community docker
+RUN apk add --update docker openrc
 RUN rc-update add docker boot
 RUN service docker start
 
