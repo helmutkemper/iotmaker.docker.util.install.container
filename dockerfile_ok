@@ -1,3 +1,6 @@
+#docker run --rm --name test -d golang:alpine3.12 tail -f /dev/null
+#docker exec -it test sh
+
 FROM golang:alpine3.12 as builder
 
 RUN mkdir /app
@@ -8,14 +11,9 @@ COPY . /app
 # install git
 RUN apk add --no-cache git
 
-RUN go get godoc.org/golang.org/x/sys/windows; exit 0
-
 # install docker
 RUN apk add --update docker openrc
 RUN rc-update add docker boot
-RUN service docker start
-
-# install moby project - start
 
 # make libraries folder from git project
 RUN mkdir /go/src/github.com
@@ -24,12 +22,12 @@ RUN mkdir /go/src/github.com/docker
 # change dir
 WORKDIR /go/src/github.com/docker
 
-# clone moby project
-RUN git clone https://github.com/moby/moby.git
+RUN apk update && apk add --no-cache wget
+RUN wget https://github.com/moby/moby/archive/v19.03.11.tar.gz
+RUN tar -xzf v19.03.11.tar.gz && rm v19.03.11.tar.gz
+RUN mv moby-19.03.11 docker
 
-# rename moby to docker
-RUN mv moby docker
-
+RUN go get godoc.org/golang.org/x/sys/windows; exit 0
 RUN go get golang.org/x/crypto; exit 0
 RUN go get golang.org/x/net; exit 0
 RUN go get golang.org/x/text; exit 0
@@ -47,7 +45,6 @@ RUN go get github.com/docker/distribution/reference; exit 0
 RUN go get github.com/Microsoft/go-winio; exit 0
 RUN go get github.com/helmutkemper/iotmaker.docker.util.whaleAquarium; exit 0
 RUN go get github.com/helmutkemper/iotmaker.docker; exit 0
-
 
 WORKDIR /
 RUN find . -name vendor -type d -exec rm -rf {} +

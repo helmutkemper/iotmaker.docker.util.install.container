@@ -12,8 +12,8 @@ COPY . /app
 RUN apk add --no-cache git
 
 # install docker
-RUN apk add --update docker openrc
-RUN rc-update add docker boot
+# RUN apk add --update docker openrc
+# RUN rc-update add docker boot
 
 # make libraries folder from git project
 RUN mkdir /go/src/github.com
@@ -55,8 +55,16 @@ RUN find . -name vendor -type d -exec rm -rf {} +
 ARG CGO_ENABLED=0
 RUN go build -o /app/main /app/main.go
 
+FROM scratch
+
+COPY --from=builder /app/ .
+
+# install docker
+RUN apk add --update docker openrc
+RUN rc-update add docker boot
+
 # VOLUME /var/run/docker.sock
 # VOLUME /app/static/
 EXPOSE 3000
 
-CMD ["/app/main"]
+CMD ["/main"]
