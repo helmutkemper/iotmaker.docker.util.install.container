@@ -48,7 +48,7 @@ func main() {
   err, _, _ = factoryContainerFromRemoteServer.NewContainerFromRemoteServerChangeExposedPortAndVolumes(
     "delete:latest",
     "delete",
-    "https://github.com/helmutkemper/lixo.git",
+    "https://github.com/helmutkemper/iotmaker.docker.util.install.container.git",
     []string{},
     []nat.Port{
       "3000/tcp",
