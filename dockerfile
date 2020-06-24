@@ -1,6 +1,7 @@
 #docker run --rm --name test -d golang:alpine3.12 tail -f /dev/null
 #docker exec -it test sh
 #unix:///var/run/docker.sock
+#docker run --name delete -p 3000:3000 -v //var/run/docker.sock:/var/run/docker.sock delete:latest
 
 FROM golang:alpine3.12 as builder
 
