@@ -57,7 +57,8 @@ RUN find . -name vendor -type d -exec rm -rf {} +
 ARG CGO_ENABLED=0
 RUN go build -o /app/main /app/main.go
 
-FROM scratch
+FROM golang:alpine3.12
+#scratch
 
 COPY --from=builder /app .
 
