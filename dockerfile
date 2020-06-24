@@ -1,5 +1,6 @@
 #docker run --rm --name test -d golang:alpine3.12 tail -f /dev/null
 #docker exec -it test sh
+#unix:///var/run/docker.sock
 
 FROM golang:alpine3.12 as builder
 
@@ -64,7 +65,7 @@ COPY --from=builder /app .
 RUN apk add --update docker openrc
 RUN rc-update add docker boot
 
-# VOLUME /var/run/docker.sock
+VOLUME /var/run/docker.sock
 # VOLUME /app/static/
 EXPOSE 3000
 
