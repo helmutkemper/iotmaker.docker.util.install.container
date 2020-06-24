@@ -68,4 +68,4 @@ RUN rc-update add docker boot
 # VOLUME /app/static/
 EXPOSE 3000
 
-CMD ["/main"]
+CMD ["./main"]
