@@ -57,14 +57,9 @@ RUN find . -name vendor -type d -exec rm -rf {} +
 ARG CGO_ENABLED=0
 RUN go build -o /app/main /app/main.go
 
-FROM golang:alpine3.12
-#scratch
+FROM scratch
 
 COPY --from=builder /app .
-
-# install docker
-#RUN apk add --update docker openrc
-#RUN rc-update add docker boot
 
 VOLUME /var/run/docker.sock
 # VOLUME /app/static/
