@@ -62,8 +62,8 @@ FROM golang:alpine3.12
 COPY --from=builder /app .
 
 # install docker
-RUN apk add --update docker openrc
-RUN rc-update add docker boot
+#RUN apk add --update docker openrc
+#RUN rc-update add docker boot
 
 VOLUME /var/run/docker.sock
 # VOLUME /app/static/
